@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lich_nhan_vien">Lịch nhân viên</string>
+    <string name="quan_ly_nhan_vien">Quản lý nhân viên</string>
+    <string name="duyet_don">Duyệt đơn</string>
+    <string name="xu_ly_vi_pham">Xử lý vi phạm</string>
+    <string name="phan_hoi_y_kien">Phản hồi ý kiến</string>
+</resources>
