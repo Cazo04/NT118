@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textInputLayout_style_login" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#fff</item>
+        <item name="hintTextColor">#fff</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="startIconTint">#fff</item>
+        <item name="endIconTint">#fff</item>
+        <item name="cursorColor">#fff</item>
+    </style>
+</resources>

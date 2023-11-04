@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="drawable_padding_login">12dp</dimen>
+    <dimen name="input_height_login">55dp</dimen>
+    <dimen name="input_padding_login">12dp</dimen>
+</resources>
