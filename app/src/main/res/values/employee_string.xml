@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lich_lam_viec">Lịch làm việc</string>
+    <string name="bang_luong">Bảng lương</string>
+    <string name="vi_pham">Vi phạm</string>
+    <string name="viet_don">Viết đơn</string>
+    <string name="y_kien">Ý kiến</string>
+    <string name="lich_lam_viec_ke_tiep">Lịch làm việc kế tiếp</string>
+</resources>
