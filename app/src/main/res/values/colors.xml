@@ -5,5 +5,5 @@
     <color name="color1">#0d253f</color>
     <color name="color2">#76b6c2</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
-
+    <color name="gray">#2A2C31</color>
 </resources>
