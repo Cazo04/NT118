@@ -4,17 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.nt118.Class.NhanVien;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
-public class Login extends AppCompatActivity implements Server.PostResponseListener {
+public class Login extends AppCompatActivity {
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +40,43 @@ public class Login extends AppCompatActivity implements Server.PostResponseListe
 
                 String jsonString = new Gson().toJson(nhanVien);
 
-                server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/Login", jsonString, Login.this);
+                server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/Login", jsonString, new Server.PostResponseListener() {
+                    @Override
+                    public void onPostCompleted(String response) {
+                        progressDialog.dismiss();
+                        boolean result;
+                        if (response.equals("true") || response.equals("false")){
+                            result = Boolean.valueOf(response);
+                            if (result){
+                                server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/CheckTRPH", new Gson().toJson(nhanVien.getMANV()), new Server.PostResponseListener() {
+                                    @Override
+                                    public void onPostCompleted(String response) {
+                                        Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                                        if (response.equals("204")){
+                                            Intent intent = new Intent(Login.this, HomeEmployee.class);
+                                            intent.putExtra("info", jsonString);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                });
+                                return;
+                                //response = "Đăng nhập thành công!";
+                            } else response = "Sai tên đăng nhập hoặc mật khẩu";
+                        } else
+                        if (response.equals("204")){
+                            Intent intent = new Intent(Login.this, ChangePassword.class);
+                            intent.putExtra("noNeedPassword", true);
+                            intent.putExtra("username", nhanVien.getMANV());
+                            startActivity(intent);
+                            return;
+                        } else response = "Response code: " + response;
+
+                        Toast.makeText(Login.this, response, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
-    @Override
-    public void onPostCompleted(String response) {
-        progressDialog.dismiss();
-        boolean result;
-        if (response.equals("true") || response.equals("false")){
-            result = Boolean.valueOf(response);
-            if (result){
-                response = "Đăng nhập thành công!";
-            } else response = "Sai tên đăng nhập hoặc mật khẩu";
-        } else
-        if (response.equals("204")){
-            Intent intent = new Intent(this, ChangePassword.class);
-            intent.putExtra("noNeedPassword", true);
-            intent.putExtra("username", ((TextInputLayout)findViewById(R.id.til_username)).getEditText().getText().toString().trim());
-            startActivity(intent);
-            return;
-        } else response = "Response code: " + response;
 
-        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
-    }
 }

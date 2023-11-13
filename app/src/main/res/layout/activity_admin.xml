@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="16dp">
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnManageEmployees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lý nhân viên"
+        android:layout_below="@id/tvTime"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnManageDepartments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quản lý phòng ban"
+        android:layout_below="@id/btnManageEmployees"
+        android:layout_marginTop="10dp"/>
+</RelativeLayout>

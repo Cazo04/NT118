@@ -3,6 +3,7 @@ package com.example.nt118;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.nt118.Class.NhanVien;
 import com.google.gson.Gson;
 
 import java.io.BufferedOutputStream;
@@ -25,45 +26,7 @@ public class Server {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... voids) {
-                try {
-                    // Tạo URL từ địa chỉ API
-                    URL url = new URL(apiUrl);
-
-                    // Mở kết nối HTTP
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setConnectTimeout(10000);
-                    connection.setRequestMethod("POST");
-                    connection.setRequestProperty("Content-Type", "application/json"); // Thay đổi loại dữ liệu nếu cần
-
-                    // Cho phép ghi dữ liệu đến server
-                    connection.setDoOutput(true);
-
-                    // Ghi dữ liệu cần POST lên Output Stream
-                    OutputStream os = connection.getOutputStream();
-                    OutputStreamWriter osw = new OutputStreamWriter(os);
-                    osw.write(postData);
-                    osw.flush();
-                    osw.close();
-
-                    // Đọc dữ liệu trả về từ server
-                    int responseCode = connection.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                        StringBuilder response = new StringBuilder();
-                        String line;
-                        while ((line = br.readLine()) != null) {
-                            response.append(line);
-                        }
-                        br.close();
-
-                        return response.toString();
-                    } else {
-                        return String.valueOf(responseCode);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return "Exception: " + e.getMessage();
-                }
+                return sendPostRequest(apiUrl,postData);
             }
 
             @Override
@@ -117,6 +80,7 @@ public class Server {
 
             // Mở kết nối HTTP
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(10000);
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json"); // Thay đổi loại dữ liệu nếu cần
 
@@ -124,17 +88,14 @@ public class Server {
             connection.setDoOutput(true);
 
             // Ghi dữ liệu cần POST lên Output Stream
-            OutputStream os = new BufferedOutputStream(connection.getOutputStream());
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            writer.write(postData);
-            writer.flush();
-            writer.close();
-            os.close();
-            Log.i("TestLogin", postData);
+            OutputStream os = connection.getOutputStream();
+            OutputStreamWriter osw = new OutputStreamWriter(os);
+            osw.write(postData);
+            osw.flush();
+            osw.close();
 
             // Đọc dữ liệu trả về từ server
             int responseCode = connection.getResponseCode();
-
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder response = new StringBuilder();
@@ -143,9 +104,10 @@ public class Server {
                     response.append(line);
                 }
                 br.close();
+
                 return response.toString();
             } else {
-                return "POST request failed with response code: " + responseCode;
+                return String.valueOf(responseCode);
             }
         } catch (Exception e) {
             e.printStackTrace();
