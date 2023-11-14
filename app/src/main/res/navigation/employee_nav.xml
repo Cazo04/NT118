@@ -2,4 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/first_nav" />
+    android:id="@+id/first_nav"
+    app:startDestination="@id/homeEmployee">
+    <activity
+        android:id="@+id/homeEmployee"
+        android:name="com.example.nt118.HomeEmployee"
+        android:label="HomeEmployee" />
+    <activity
+        android:id="@+id/profile"
+        android:name="com.example.nt118.Profile"
+        android:label="Profile" />
+</navigation>

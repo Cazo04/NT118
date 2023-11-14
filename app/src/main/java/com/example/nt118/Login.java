@@ -53,8 +53,9 @@ public class Login extends AppCompatActivity {
                                     public void onPostCompleted(String response) {
                                         Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                                         if (response.equals("204")){
-                                            Intent intent = new Intent(Login.this, HomeEmployee.class);
-                                            intent.putExtra("info", jsonString);
+                                            Intent intent = new Intent(Login.this, MainActivity.class);
+                                            intent.putExtra("manv", nhanVien.getMANV());
+                                            intent.putExtra("pass", nhanVien.getMK());
                                             startActivity(intent);
                                             finish();
                                         }

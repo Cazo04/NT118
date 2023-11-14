@@ -61,7 +61,7 @@
         android:contentDescription="@string/setting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_action_name" />
+        android:src="@drawable/baseline_settings_24_white" />
 
     <LinearLayout
         android:layout_width="match_parent"
