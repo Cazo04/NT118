@@ -53,6 +53,7 @@ public class HomeEmployee extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        Server server = new Server();
     }
 
     @Override

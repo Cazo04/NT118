@@ -1,4 +1,9 @@
 package com.example.nt118.Class;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NhanVien {
@@ -122,7 +127,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public class Checker {
+    public static class Checker {
         private boolean MANV;
         private boolean MK;
         private boolean HOTEN;
@@ -232,8 +237,53 @@ public class NhanVien {
             this.PHBAN = PHBAN;
         }
 
-        public Checker() {
-        }
     }
 
+    public static NhanVien convertJsonToNhanVien(String jsonStr) {
+        NhanVien nhanVien = new NhanVien();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+        try {
+            JSONObject jsonObject = new JSONObject(jsonStr);
+
+            nhanVien.setMANV(jsonObject.optString("manv"));
+            nhanVien.setMK(jsonObject.optString("mk"));
+            nhanVien.setHOTEN(jsonObject.optString("hoten"));
+            nhanVien.setGIOITINH(jsonObject.optString("gioitinh"));
+
+            // Phân tích ngày sinh và ngày vào làm
+            try {
+                String ngSinhStr = jsonObject.optString("ngsinh");
+                if (!ngSinhStr.isEmpty()) {
+                    Date ngSinh = sdf.parse(ngSinhStr);
+                    nhanVien.setNGSINH(ngSinh);
+                }
+
+                String ngVlStr = jsonObject.optString("ngvl");
+                if (!ngVlStr.isEmpty()) {
+                    Date ngVl = sdf.parse(ngVlStr);
+                    nhanVien.setNGVL(ngVl);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            nhanVien.setDC(jsonObject.optString("dc"));
+            nhanVien.setSDT(jsonObject.optString("sdt"));
+            nhanVien.setEMAIL(jsonObject.optString("email"));
+            nhanVien.setCCCD(jsonObject.optString("cccd"));
+
+            if (jsonObject.has("lcb") && !jsonObject.isNull("lcb")) {
+                nhanVien.setLCB(jsonObject.getInt("lcb"));
+            }
+
+            nhanVien.setPHBAN(jsonObject.optString("phban"));
+            // Lưu ý: Trường 'check' không được xử lý vì nó là null trong ví dụ JSON
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return nhanVien;
+    }
 }
