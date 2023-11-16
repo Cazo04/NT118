@@ -1,5 +1,6 @@
 package com.example.nt118;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -88,15 +89,16 @@ public class Profile extends Fragment {
         server.postAsync("https://tester.cazo-dev.net/NT118/api/NhanVien/GetOne", jsonString, new Server.PostResponseListener() {
             @Override
             public void onPostCompleted(String response) {
-                if (!response.equals("204")){
+                if (!response.equals("204") && !response.contains("Exception:")){
 
                     NhanVien res = NhanVien.convertJsonToNhanVien(response);
                     displayNhanVienInfo(res);
-                    Toast.makeText(getContext(), res.getHOTEN(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), res.getHOTEN(), Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+
     }
     public void displayNhanVienInfo(NhanVien nhanVien) {
         name.setText(nhanVien.getHOTEN() != null ? nhanVien.getHOTEN() : "Trống");
@@ -106,9 +108,9 @@ public class Profile extends Fragment {
         cccd.setText("CCCD: " + (nhanVien.getCCCD() != null ? nhanVien.getCCCD() : "Trống"));
         diaChi.setText("Địa chỉ: " + (nhanVien.getDC() != null ? nhanVien.getDC() : "Trống"));
         ngayVaoLam.setText("Ngày vào làm: " +(nhanVien.getNGVL() != null ? formatDate(nhanVien.getNGVL()) : "Trống"));
-        phongBan.setText("Phòng ban: " + (!nhanVien.getPHBAN().isEmpty() ? nhanVien.getPHBAN() : "Trống"));
-        sdt.setText("SĐT: " +(!nhanVien.getSDT().isEmpty() ? nhanVien.getSDT() : "Trống"));
-        email.setText("Email: " + (!nhanVien.getEMAIL().isEmpty() ? nhanVien.getEMAIL() : "Trống"));
+        phongBan.setText("Phòng ban: " + (nhanVien.getPHBAN() != null && !nhanVien.getPHBAN().isEmpty() ? nhanVien.getPHBAN() : "Trống"));
+        sdt.setText("SĐT: " +(nhanVien.getSDT() != null && !nhanVien.getSDT().isEmpty() ? nhanVien.getSDT() : "Trống"));
+        email.setText("Email: " + (nhanVien.getEMAIL() != null && !nhanVien.getEMAIL().isEmpty() ? nhanVien.getEMAIL() : "Trống"));
     }
 
     private String formatDate(Date date) {
@@ -137,5 +139,13 @@ public class Profile extends Fragment {
         phongBan = view.findViewById(R.id.phong_ban);
         sdt = view.findViewById(R.id.sdt);
         email = view.findViewById(R.id.email);
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Setting.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 }
