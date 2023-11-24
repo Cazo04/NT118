@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.example.nt118.Class.AdminData;
 import com.example.nt118.Class.NhanVien;
 import com.example.nt118.Class.SharedPrefsHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
+
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
     private ProgressDialog progressDialog;
@@ -25,9 +28,10 @@ public class Login extends AppCompatActivity {
 
         SharedPrefsHelper helper = new SharedPrefsHelper(this);
         if (helper.getUsername() != null){
-            Log.i("testSave",helper.getUsername());
-            Log.i("testSave",helper.getPassword());
-            StartLogin(helper.getUsername(),helper.getPassword());
+            if (helper.getUsername().contains("admin")) {
+                AdminLogin(helper.getUsername(), helper.getPassword());
+            } else
+                StartLogin(helper.getUsername(),helper.getPassword());
         }
         ((Button)findViewById(R.id.btn_login)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,7 +39,59 @@ public class Login extends AppCompatActivity {
                 String username = ((TextInputLayout)findViewById(R.id.til_username)).getEditText().getText().toString().trim();
                 String password = ((TextInputLayout)findViewById(R.id.til_password)).getEditText().getText().toString().trim();
 
+                if (username.contains("admin")){
+                    AdminLogin(username,Server.hashPassword(password));
+                    return;
+                }
+
                 StartLogin(username, Server.hashPassword(password));
+            }
+        });
+    }
+    private void AdminLogin(String username, String password){
+        progressDialog = new ProgressDialog(Login.this);
+        progressDialog.setMessage("ADMIN: Đang thực hiện POST...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        Server server = new Server();
+        AdminData data = new AdminData();
+        data.setId(Integer.valueOf(username.replace("admin","")));
+        data.setMK(password);
+
+        String jsonString = new Gson().toJson(data);
+
+        server.postAsync("https://tester.cazo-dev.net/NT118/api/Admin/login", jsonString, new Server.PostResponseListener() {
+            @Override
+            public void onPostCompleted(Map.Entry<String, Integer> response) {
+                String status = "";
+                if (response.getValue() == 200){
+                    boolean result = Boolean.valueOf(response.getKey());
+                    if (result){
+                        SharedPrefsHelper helper = new SharedPrefsHelper(Login.this);
+                        if (((CheckBox)findViewById(R.id.chb_saveLogin)).isChecked()){
+                            helper.saveUsernameAndPassword(username, password);
+                        } else  helper.clearData();
+
+                        Intent intent = new Intent(Login.this, Admin.class);
+                        intent.putExtra("id", data.getId());
+                        intent.putExtra("mk", data.getMK());
+                        startActivity(intent);
+                        finish();
+                        status = "Đăng nhập thành công!";
+                    } else status = "Sai tên đăng nhập hoặc mật khẩu";
+                } else
+                if (response.getValue() == 204){
+                    progressDialog.dismiss();
+                    Intent intent = new Intent(Login.this, ChangePassword.class);
+                    intent.putExtra("noNeedPassword", true);
+                    intent.putExtra("admin", true);
+                    intent.putExtra("username", String.valueOf(data.getId()));
+                    startActivity(intent);
+                    return;
+                } else status = "Response code: " + response.getValue().toString();
+                progressDialog.dismiss();
+                Toast.makeText(Login.this, status, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -55,17 +111,18 @@ public class Login extends AppCompatActivity {
 
         server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/Login", jsonString, new Server.PostResponseListener() {
             @Override
-            public void onPostCompleted(String response) {
+            public void onPostCompleted(Map.Entry<String, Integer> response) {
                 boolean result;
-                if (response.equals("true") || response.equals("false")){
-                    result = Boolean.valueOf(response);
+                String status = "";
+                if (response.getValue() == 200){
+                    result = Boolean.valueOf(response.getKey());
                     if (result){
                         server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/CheckTRPH", new Gson().toJson(nhanVien.getMANV()), new Server.PostResponseListener() {
                             @Override
-                            public void onPostCompleted(String response) {
+                            public void onPostCompleted(Map.Entry<String, Integer> response) {
                                 progressDialog.dismiss();
                                 Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-                                if (response.equals("204")){
+                                if (response.getValue() == 204){
                                     SharedPrefsHelper helper = new SharedPrefsHelper(Login.this);
                                     if (((CheckBox)findViewById(R.id.chb_saveLogin)).isChecked()){
                                         helper.saveUsernameAndPassword(nhanVien.getMANV(),nhanVien.getMK());
@@ -81,18 +138,18 @@ public class Login extends AppCompatActivity {
                         });
                         return;
                         //response = "Đăng nhập thành công!";
-                    } else response = "Sai tên đăng nhập hoặc mật khẩu";
+                    } else status = "Sai tên đăng nhập hoặc mật khẩu";
                 } else
-                if (response.equals("204")){
+                if (response.getValue() == 204){
                     progressDialog.dismiss();
                     Intent intent = new Intent(Login.this, ChangePassword.class);
                     intent.putExtra("noNeedPassword", true);
                     intent.putExtra("username", nhanVien.getMANV());
                     startActivity(intent);
                     return;
-                } else response = "Response code: " + response;
+                } else status = "Response code: " + response.getValue().toString();
                 progressDialog.dismiss();
-                Toast.makeText(Login.this, response, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, status, Toast.LENGTH_SHORT).show();
             }
         });
     }

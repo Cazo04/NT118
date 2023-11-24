@@ -17,20 +17,22 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.AbstractMap;
+import java.util.Map;
 
 public class Server {
     public interface PostResponseListener {
-        void onPostCompleted(String response);
+        void onPostCompleted(Map.Entry<String, Integer> response);
     }
     public void postAsync(final String apiUrl, final String postData, final PostResponseListener listener) {
-        new AsyncTask<Void, Void, String>() {
+        new AsyncTask<Void, Void, Map.Entry<String, Integer>>() {
             @Override
-            protected String doInBackground(Void... voids) {
+            protected Map.Entry<String, Integer> doInBackground(Void... voids) {
                 return sendPostRequest(apiUrl,postData);
             }
 
             @Override
-            protected void onPostExecute(String response) {
+            protected void onPostExecute(Map.Entry<String, Integer> response) {
                 // Gọi callback listener khi POST hoàn thành
                 listener.onPostCompleted(response);
             }
@@ -73,7 +75,7 @@ public class Server {
         return -1;
     }
 
-    public static String sendPostRequest(String apiUrl, String postData) {
+    public static Map.Entry<String, Integer> sendPostRequest(String apiUrl, String postData) {
         try {
             // Tạo URL từ địa chỉ API
             URL url = new URL(apiUrl);
@@ -105,13 +107,13 @@ public class Server {
                 }
                 br.close();
 
-                return response.toString();
+                return new AbstractMap.SimpleEntry<>(response.toString(), responseCode);
             } else {
-                return String.valueOf(responseCode);
+                return new AbstractMap.SimpleEntry<>("",responseCode);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "Exception: " + e.getMessage();
+            return new AbstractMap.SimpleEntry<>("Exception: " + e.getMessage(), -1);
         }
     }
 }

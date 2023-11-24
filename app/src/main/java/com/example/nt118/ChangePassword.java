@@ -14,6 +14,8 @@ import com.example.nt118.Class.ChangePasswordData;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
+import java.util.Map;
+
 public class ChangePassword extends AppCompatActivity implements Server.PostResponseListener {
     private ProgressDialog progressDialog;
     @Override
@@ -22,6 +24,7 @@ public class ChangePassword extends AppCompatActivity implements Server.PostResp
         setContentView(R.layout.activity_change_password);
 
         Intent intent = getIntent();
+        boolean admin = intent.getBooleanExtra("admin", false);
         boolean noNeedPassword = intent.getBooleanExtra("noNeedPassword", false);
         String username = intent.getStringExtra("username");
 
@@ -52,16 +55,20 @@ public class ChangePassword extends AppCompatActivity implements Server.PostResp
                     progressDialog.show();
 
                     Server server = new Server();
-                    server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/ChangePassword", jsonString, ChangePassword.this);
+                    if (admin){
+                        Log.i("testAdmin", jsonString);
+                        server.postAsync("https://tester.cazo-dev.net/NT118/api/Admin/ChangePassword", jsonString, ChangePassword.this);
+                    } else
+                        server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/ChangePassword", jsonString, ChangePassword.this);
                 }
             }
         });
     }
     @Override
-    public void onPostCompleted(String response){
+    public void onPostCompleted(Map.Entry<String, Integer> response){
         progressDialog.dismiss();
-        if (response.equals("204")) {
+        if (response.getValue() == 204) {
             finish();
-        } else Toast.makeText(this, "Response code: " + response, Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "Response code: " + response.getValue().toString(), Toast.LENGTH_SHORT).show();
     }
 }

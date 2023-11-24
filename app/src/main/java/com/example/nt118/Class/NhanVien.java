@@ -124,6 +124,12 @@ public class NhanVien {
     public void setCheck(Checker check) {
         Check = check;
     }
+
+    public NhanVien(String MANV, String HOTEN) {
+        this.MANV = MANV;
+        this.HOTEN = HOTEN;
+    }
+
     public NhanVien() {
     }
 

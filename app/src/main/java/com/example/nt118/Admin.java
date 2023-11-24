@@ -2,8 +2,11 @@ package com.example.nt118;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -21,9 +24,22 @@ public class Admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        Intent intent = getIntent();
+        int id = intent.getIntExtra("id", 0);
+        String mk = intent.getStringExtra("mk");
 
         tvTime = findViewById(R.id.tvTime);
         setupTimeUpdater();
+
+        ((Button)findViewById(R.id.btnManageDepartments)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Admin.this, AdminManageDepartments.class);
+                intent.putExtra("id", id);
+                intent.putExtra("mk", mk);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupTimeUpdater() {
@@ -36,6 +52,7 @@ public class Admin extends AppCompatActivity {
         };
         timeHandler.post(timeRunnable);
     }
+
 
     @Override
     protected void onDestroy() {

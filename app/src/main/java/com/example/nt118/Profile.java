@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,10 +89,10 @@ public class Profile extends Fragment {
         String jsonString = new Gson().toJson(nhanVien);
         server.postAsync("https://tester.cazo-dev.net/NT118/api/NhanVien/GetOne", jsonString, new Server.PostResponseListener() {
             @Override
-            public void onPostCompleted(String response) {
-                if (!response.equals("204") && !response.contains("Exception:")){
+            public void onPostCompleted(Map.Entry<String, Integer> response) {
+                if (response.getValue() == 200){
 
-                    NhanVien res = NhanVien.convertJsonToNhanVien(response);
+                    NhanVien res = NhanVien.convertJsonToNhanVien(response.getKey());
                     displayNhanVienInfo(res);
                     //Toast.makeText(getContext(), res.getHOTEN(), Toast.LENGTH_SHORT).show();
                 }
