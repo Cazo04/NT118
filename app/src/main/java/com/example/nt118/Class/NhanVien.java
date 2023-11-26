@@ -1,4 +1,6 @@
 package com.example.nt118.Class;
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -253,9 +255,9 @@ public class NhanVien {
             JSONObject jsonObject = new JSONObject(jsonStr);
 
             nhanVien.setMANV(jsonObject.optString("manv"));
-            nhanVien.setMK(jsonObject.optString("mk"));
-            nhanVien.setHOTEN(jsonObject.optString("hoten"));
-            nhanVien.setGIOITINH(jsonObject.optString("gioitinh"));
+            if (!jsonObject.isNull("mk")) nhanVien.setMK(jsonObject.optString("mk"));
+            if (!jsonObject.isNull("hoten")) nhanVien.setHOTEN(jsonObject.optString("hoten"));
+            if (!jsonObject.isNull("gioitinh")) nhanVien.setGIOITINH(jsonObject.optString("gioitinh"));
 
             // Phân tích ngày sinh và ngày vào làm
             try {
@@ -274,17 +276,16 @@ public class NhanVien {
                 e.printStackTrace();
             }
 
-            nhanVien.setDC(jsonObject.optString("dc"));
-            nhanVien.setSDT(jsonObject.optString("sdt"));
-            nhanVien.setEMAIL(jsonObject.optString("email"));
-            nhanVien.setCCCD(jsonObject.optString("cccd"));
+            if (!jsonObject.isNull("dc")) nhanVien.setDC(jsonObject.optString("dc"));
+            if (!jsonObject.isNull("sdt")) nhanVien.setSDT(jsonObject.optString("sdt"));
+            if (!jsonObject.isNull("email")) nhanVien.setEMAIL(jsonObject.optString("email"));
+            if (!jsonObject.isNull("cccd")) nhanVien.setCCCD(jsonObject.optString("cccd"));
 
             if (jsonObject.has("lcb") && !jsonObject.isNull("lcb")) {
                 nhanVien.setLCB(jsonObject.getInt("lcb"));
             }
 
-            nhanVien.setPHBAN(jsonObject.optString("phban"));
-            // Lưu ý: Trường 'check' không được xử lý vì nó là null trong ví dụ JSON
+            if (!jsonObject.isNull("phban")) nhanVien.setPHBAN(jsonObject.optString("phban"));
 
         } catch (JSONException e) {
             e.printStackTrace();

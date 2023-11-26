@@ -46,7 +46,10 @@ public class TrphArrayAdapter extends ArrayAdapter<NhanVien> {
             constraintLayout.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.black1));
         } else constraintLayout.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.black));
         if (item != null) {
-            textViewName.setText(item.getMANV() + " - " + item.getHOTEN());
+            String text = item.getMANV() + " - " + item.getHOTEN();
+            if (item.getPHBAN() != null && !item.getPHBAN().isEmpty())
+                text += " - " + item.getPHBAN();
+            textViewName.setText(text);
             if (id_trph.contains(item.getMANV())){
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue));
             }
@@ -58,8 +61,16 @@ public class TrphArrayAdapter extends ArrayAdapter<NhanVien> {
         nhanViens.add(newNhanVien);
         notifyDataSetChanged();
     }
+    public void clearData(){
+        nhanViens.clear();
+        notifyDataSetChanged();
+    }
     public void updateTrphData(String trph) {
         id_trph.add(trph);
+        notifyDataSetChanged();
+    }
+    public void clearTrphData(){
+        id_trph.clear();
         notifyDataSetChanged();
     }
     @NonNull

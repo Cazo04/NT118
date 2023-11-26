@@ -36,6 +36,10 @@ public class PhongBan {
         this.NGNC = NGNC;
     }
 
+    public PhongBan(String MAPH) {
+        this.MAPH = MAPH;
+    }
+
     public PhongBan() {
     }
     public static PhongBan convertJsonToPhongBan(String jsonStr) {
