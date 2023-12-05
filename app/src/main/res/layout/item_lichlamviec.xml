@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/txt_malv"
+        android:layout_width="90dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="MALV"
+        android:textSize="16dp"
+        android:paddingLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/txt_tieude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tiêu đề"
+        app:layout_constraintStart_toEndOf="@id/txt_malv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/txt_mota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mô tả"
+        app:layout_constraintStart_toEndOf="@id/txt_malv"
+        app:layout_constraintTop_toBottomOf="@id/txt_tieude"/>
+    <TextView
+        android:id="@+id/txt_ngaybatdau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày bắt đầu"
+        app:layout_constraintStart_toEndOf="@id/txt_malv"
+        app:layout_constraintTop_toBottomOf="@id/txt_mota"/>
+    <TextView
+        android:id="@+id/txt_ngayketthuc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày kết thúc"
+        app:layout_constraintStart_toEndOf="@id/txt_malv"
+        app:layout_constraintTop_toBottomOf="@id/txt_ngaybatdau"/>
+    <TextView
+        android:id="@+id/txt_phban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phòng ban"
+        app:layout_constraintStart_toEndOf="@id/txt_malv"
+        app:layout_constraintTop_toBottomOf="@id/txt_ngayketthuc"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ public class Login extends AppCompatActivity {
 
         SharedPrefsHelper helper = new SharedPrefsHelper(this);
         if (helper.getUsername() != null){
+            ((CheckBox)findViewById(R.id.chb_saveLogin)).setChecked(true);
             if (helper.getUsername().contains("admin")) {
                 AdminLogin(helper.getUsername(), helper.getPassword());
             } else
@@ -61,7 +62,7 @@ public class Login extends AppCompatActivity {
 
         String jsonString = new Gson().toJson(data);
 
-        server.postAsync("https://tester.cazo-dev.net/NT118/api/Admin/login", jsonString, new Server.PostResponseListener() {
+        server.postAsync("https://s3.cazo-dev.net/NT118/api/Admin/login", jsonString, new Server.PostResponseListener() {
             @Override
             public void onPostCompleted(Map.Entry<String, Integer> response) {
                 String status = "";
@@ -109,7 +110,7 @@ public class Login extends AppCompatActivity {
 
         String jsonString = new Gson().toJson(nhanVien);
 
-        server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/Login", jsonString, new Server.PostResponseListener() {
+        server.postAsync("https://s3.cazo-dev.net/NT118/api/Home/Login", jsonString, new Server.PostResponseListener() {
             @Override
             public void onPostCompleted(Map.Entry<String, Integer> response) {
                 boolean result;
@@ -117,23 +118,31 @@ public class Login extends AppCompatActivity {
                 if (response.getValue() == 200){
                     result = Boolean.valueOf(response.getKey());
                     if (result){
-                        server.postAsync("https://tester.cazo-dev.net/NT118/api/Home/CheckTRPH", new Gson().toJson(nhanVien.getMANV()), new Server.PostResponseListener() {
+                        SharedPrefsHelper helper = new SharedPrefsHelper(Login.this);
+                        if (((CheckBox)findViewById(R.id.chb_saveLogin)).isChecked()){
+                            helper.saveUsernameAndPassword(nhanVien.getMANV(),nhanVien.getMK());
+                        } else  helper.clearData();
+                        server.postAsync("https://s3.cazo-dev.net/NT118/api/Home/CheckTRPH", new Gson().toJson(nhanVien.getMANV()), new Server.PostResponseListener() {
                             @Override
                             public void onPostCompleted(Map.Entry<String, Integer> response) {
                                 progressDialog.dismiss();
-                                Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                                 if (response.getValue() == 204){
-                                    SharedPrefsHelper helper = new SharedPrefsHelper(Login.this);
-                                    if (((CheckBox)findViewById(R.id.chb_saveLogin)).isChecked()){
-                                        helper.saveUsernameAndPassword(nhanVien.getMANV(),nhanVien.getMK());
-                                    } else  helper.clearData();
-
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     intent.putExtra("manv", nhanVien.getMANV());
                                     intent.putExtra("pass", nhanVien.getMK());
                                     startActivity(intent);
                                     finish();
+                                } else if (response.getValue() == 200){
+                                    Intent intent = new Intent(Login.this, SecondActivity.class);
+                                    intent.putExtra("manv", nhanVien.getMANV());
+                                    intent.putExtra("pass", nhanVien.getMK());
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Login.this, "Respone code: " + response.getValue().toString(), Toast.LENGTH_SHORT).show();
+                                    return;
                                 }
+                                Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                             }
                         });
                         return;

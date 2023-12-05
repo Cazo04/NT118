@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    tools:context=".HomeManager">
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_lich_nhan_vien"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Lịch nhân viên"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="150dp"/>
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_quan_ly_nhan_vien"
+        android:text="Quản lý \nnhân viên"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="150dp"/>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_duyet_don"
+        android:text="Duyệt đơn"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_lich_nhan_vien"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_xu_ly_vi_pham"
+        android:text="Xử lý vi phạm"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_quan_ly_nhan_vien"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_phan_hoi_y_kien"
+        android:text="Phản hồi ý kiến"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_duyet_don"
+        android:layout_marginTop="20dp">
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

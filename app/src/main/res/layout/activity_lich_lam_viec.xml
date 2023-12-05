@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Tiêu đề Lịch Làm Việc -->
+    <EditText
+        android:id="@+id/editTextTieuDe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tiêu đề"
+        android:inputType="text"/>
+
+    <!-- Mô tả Công Việc -->
+    <EditText
+        android:id="@+id/editTextMoTa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô tả"
+        android:inputType="text"/>
+
+    <!-- Ngày Bắt Đầu -->
+    <TextView
+        android:id="@+id/textViewNgayBatDau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Chọn Ngày Bắt Đầu"
+        android:padding="16dp"/>
+
+    <!-- Ngày Kết Thúc -->
+    <TextView
+        android:id="@+id/textViewNgayKetThuc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Chọn Ngày Kết Thúc"
+        android:padding="16dp"/>
+
+    <!-- Phòng Ban -->
+    <EditText
+        android:id="@+id/editTextPhBan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phòng Ban"
+        android:inputType="text"/>
+
+    <!-- Các Nút Thao Tác -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm"/>
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xóa"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

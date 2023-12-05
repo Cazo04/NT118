@@ -1,4 +1,4 @@
-package com.example.nt118.Class;
+package com.example.nt118;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.nt118.Adapter.EmployeeViewPagerAdapter;
+import com.example.nt118.Adapter.ManagerViewPagerAdapter;
 import com.example.nt118.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -22,11 +23,12 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String manv = intent.getStringExtra("manv");
         String pass = intent.getStringExtra("pass");
+        String phban = intent.getStringExtra("phban");
 
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
 
-        EmployeeViewPagerAdapter adapter = new EmployeeViewPagerAdapter(this, manv, pass);
+        ManagerViewPagerAdapter adapter = new ManagerViewPagerAdapter(this, manv, pass, phban);
         viewPager2.setAdapter(adapter);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
