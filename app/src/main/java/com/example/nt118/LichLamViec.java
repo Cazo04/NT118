@@ -1,6 +1,9 @@
 package com.example.nt118;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -10,12 +13,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.nt118.Adapter.ScheduleAdapter;
+import com.example.nt118.Class.LichLamViecData;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class LichLamViec extends AppCompatActivity {
     private EditText editTextTieuDe, editTextMoTa, editTextPhBan;
     private Button buttonAdd, buttonUpdate, buttonDelete;
     private TextView textViewNgayBatDau, textViewNgayKetThuc;
+    private RecyclerView recyclerView;
     private Calendar calendar;
     private int year, month, day;
     @Override
@@ -72,6 +81,36 @@ public class LichLamViec extends AppCompatActivity {
                 // Thêm mã xử lý cho nút Xóa ở đây
             }
         });
+
+        recyclerView = findViewById(R.id.recyclerViewSchedule);
+        List<LichLamViecData> lichLamViecData = new ArrayList<>();
+        ScheduleAdapter adapter = new ScheduleAdapter(lichLamViecData);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                int position = viewHolder.getAdapterPosition();
+                if (swipeDir == ItemTouchHelper.LEFT) {
+                    // Xử lý khi kéo sang trái: Xóa mục
+                    //scheduleList.remove(position);
+                    //adapter.notifyItemRemoved(position);
+                } else if (swipeDir == ItemTouchHelper.RIGHT) {
+                    // Xử lý khi kéo sang phải: Mở Activity khác
+                    //openAnotherActivity();
+                }
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
     }
     private void showDatePickerDialog(final TextView textView) {
         year = calendar.get(Calendar.YEAR);

@@ -28,7 +28,7 @@ public class ManagerViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new HomeManager();
+                return HomeManager.newInstance(manv,pass,phban);
             case 1:
                 return new Messages();
             case 2:
