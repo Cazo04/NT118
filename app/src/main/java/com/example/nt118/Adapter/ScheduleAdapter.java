@@ -11,7 +11,9 @@ import com.example.nt118.Class.LichLamViecData;
 import com.example.nt118.LichLamViec;
 import com.example.nt118.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
@@ -33,6 +35,17 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         holder.txtMalv.setText(String.valueOf(schedule.getMaLV()));
         holder.txtTieuDe.setText(schedule.getTieuDe());
         holder.txtMoTa.setText(schedule.getMoTa());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        if (schedule.getNgayBatDau() != null) {
+            String ngayBatDauStr = dateFormat.format(schedule.getNgayBatDau());
+            holder.txtNgayBatDau.setText(ngayBatDauStr);
+        }
+
+        if (schedule.getNgayKetThuc() != null) {
+            String ngayKetThucStr = dateFormat.format(schedule.getNgayKetThuc());
+            holder.txtNgayKetThuc.setText(ngayKetThucStr);
+        }
+        holder.txtPhBan.setText(schedule.getPhBan());
     }
 
     @Override
