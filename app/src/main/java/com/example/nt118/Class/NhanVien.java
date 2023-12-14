@@ -4,11 +4,12 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NhanVien {
+public class NhanVien implements Serializable {
     private String MANV;
     private String MK;
     private String HOTEN;

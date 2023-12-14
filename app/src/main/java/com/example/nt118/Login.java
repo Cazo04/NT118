@@ -136,6 +136,7 @@ public class Login extends AppCompatActivity {
                                     Intent intent = new Intent(Login.this, SecondActivity.class);
                                     intent.putExtra("manv", nhanVien.getMANV());
                                     intent.putExtra("pass", nhanVien.getMK());
+                                    intent.putExtra("phban", response.getKey());
                                     startActivity(intent);
                                     finish();
                                 } else {

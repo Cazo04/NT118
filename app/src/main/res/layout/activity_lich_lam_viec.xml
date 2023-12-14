@@ -21,22 +21,55 @@
         android:layout_height="wrap_content"
         android:hint="Mô tả"
         android:inputType="text"/>
-
-    <!-- Ngày Bắt Đầu -->
-    <TextView
-        android:id="@+id/textViewNgayBatDau"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Chọn Ngày Bắt Đầu"
-        android:padding="16dp"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bắt đầu:"/>
+        <TextView
+            android:layout_weight="3"
+            android:id="@+id/textViewNgayBatDau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chọn Ngày Bắt Đầu"
+            android:padding="16dp"/>
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tvTimePickerDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chọn thời gian"
+            android:padding="16dp"/>
+    </LinearLayout>
 
-    <!-- Ngày Kết Thúc -->
-    <TextView
-        android:id="@+id/textViewNgayKetThuc"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Chọn Ngày Kết Thúc"
-        android:padding="16dp"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kết thúc:"/>
+        <TextView
+            android:layout_weight="3"
+            android:id="@+id/textViewNgayKetThuc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chọn Ngày Kết Thúc"
+            android:padding="16dp"/>
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tvTimePickerKT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chọn thời gian"
+            android:padding="16dp"/>
+    </LinearLayout>
 
     <!-- Phòng Ban -->
     <EditText
@@ -68,10 +101,11 @@
             android:layout_marginRight="10dp"/>
 
         <Button
-            android:id="@+id/buttonDelete"
+            android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xóa"/>
+            android:layout_marginLeft="5dp"
+            android:text="Hủy"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSchedule"

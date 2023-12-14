@@ -87,7 +87,7 @@ public class Profile extends Fragment {
         nhanVien.setMK(pass);
 
         String jsonString = new Gson().toJson(nhanVien);
-        server.postAsync("https://tester.cazo-dev.net/NT118/api/NhanVien/GetOne", jsonString, new Server.PostResponseListener() {
+        server.postAsync("https://s3.cazo-dev.net/NT118/api/NhanVien/GetOne", jsonString, new Server.PostResponseListener() {
             @Override
             public void onPostCompleted(Map.Entry<String, Integer> response) {
                 if (response.getValue() == 200){
@@ -96,7 +96,7 @@ public class Profile extends Fragment {
                     displayNhanVienInfo(res);
                     //Toast.makeText(getContext(), res.getHOTEN(), Toast.LENGTH_SHORT).show();
                 }
-
+                Log.e("Profile", response.getValue().toString());
             }
         });
 
