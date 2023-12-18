@@ -2,6 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#2B2D31</color>
     <color name="black1">#191B1D</color>
+    <color name="black2">#25282C</color>
+    <color name="black3">#1D2023</color>
     <color name="blue">#23668B</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color1">#0d253f</color>

@@ -7,6 +7,10 @@ import com.google.gson.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -89,8 +93,29 @@ public class LichLamViecData {
 
             lichLamViecData.setTieuDe(jsonObject.optString("tieuDe"));
             lichLamViecData.setMoTa(jsonObject.optString("moTa"));
-            lichLamViecData.setNgayBatDau(jsonObject.optString("ngayBatDau"));
-            lichLamViecData.setNgayKetThuc(jsonObject.optString("ngayKetThuc"));
+
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+            if (jsonObject.has("ngayBatDau") && !jsonObject.isNull("ngayBatDau")){
+                try {
+                    Date date = parser.parse(jsonObject.optString("ngayBatDau"));
+                    String formattedDate = formatter.format(date);
+                    lichLamViecData.setNgayBatDau(formattedDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (jsonObject.has("ngayKetThuc") && !jsonObject.isNull("ngayKetThuc")){
+                try {
+                    Date date = parser.parse(jsonObject.optString("ngayKetThuc"));
+                    String formattedDate = formatter.format(date);
+                    lichLamViecData.setNgayKetThuc(formattedDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
 
             if (jsonObject.has("soLuongNhanVien") && !jsonObject.isNull("soLuongNhanVien")) {
                 lichLamViecData.setSoLuongNhanVien(jsonObject.getInt("soLuongNhanVien"));
