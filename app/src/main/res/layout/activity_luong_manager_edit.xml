@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/textview18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết lương"
+        android:textSize="24sp"
+        android:paddingTop="16dp"
+        android:paddingLeft="14dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/textview19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kỳ thanh toán:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview18"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"/>
+    <TextView
+        android:id="@+id/textview_ky_thanh_toan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20/12/2023"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview18"
+        app:layout_constraintStart_toEndOf="@+id/textview19"
+        android:paddingLeft="10dp"/>
+    <TextView
+        android:id="@+id/textview20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lương cơ bản:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview19"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="15dp"/>
+    <TextView
+        android:id="@+id/textview_luong_co_ban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2000000"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview_ky_thanh_toan"
+        app:layout_constraintStart_toEndOf="@+id/textview20"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"/>
+    <TextView
+        android:id="@+id/textview21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số giờ làm việc:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview20"
+        android:paddingLeft="14dp"
+        android:paddingTop="15dp"/>
+    <EditText
+        android:id="@+id/edittext_so_gio_lam_viec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Số giờ làm việc"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview_luong_co_ban"
+        app:layout_constraintStart_toEndOf="@+id/textview21"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="15dp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/textview22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số giờ làm ngoài giờ:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview21"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="15dp"
+        android:paddingLeft="14dp"/>
+    <EditText
+        android:id="@+id/edittext_so_gio_lam_ngoai_gio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Số giờ làm ngoài giờ"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_so_gio_lam_viec"
+        app:layout_constraintStart_toEndOf="@id/textview22"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/textview23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiền thưởng:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview22"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="15dp"/>
+    <EditText
+        android:id="@+id/edittext_tien_thuong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Tiền thường"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_so_gio_lam_ngoai_gio"
+        app:layout_constraintStart_toEndOf="@+id/textview23"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:inputType="number"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
