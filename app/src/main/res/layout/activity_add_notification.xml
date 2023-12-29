@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AddNotification">
+
+    <TextView
+        android:id="@+id/tvPhongBan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã phòng ban"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nội dung: "
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etNoiDung"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Nhập nội dung"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btnGui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

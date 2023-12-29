@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.nt118.HomeManager;
 import com.example.nt118.Messages;
 import com.example.nt118.Notification;
+import com.example.nt118.NotificationManager;
 import com.example.nt118.Profile;
 
 public class ManagerViewPagerAdapter extends FragmentStateAdapter {
@@ -32,7 +33,7 @@ public class ManagerViewPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new Messages();
             case 2:
-                return new Notification();
+                return NotificationManager.newInstance(manv,pass,phban);
             default:
                 return Profile.newInstance(manv,pass);
         }
