@@ -19,6 +19,15 @@ public class NotificationManagerData {
     private String Content;
     private int Received;
     private int Seen;
+    private boolean IsSeen;
+
+    public boolean isSeen() {
+        return IsSeen;
+    }
+
+    public void setSeen(boolean seen) {
+        IsSeen = seen;
+    }
 
     public int getId() {
         return Id;
@@ -79,6 +88,7 @@ public class NotificationManagerData {
             notificationManagerData.setContent(jsonObject.optString("content"));
             notificationManagerData.setReceived(jsonObject.optInt("received"));
             notificationManagerData.setSeen(jsonObject.optInt("seen"));
+            notificationManagerData.setSeen(jsonObject.optBoolean("isSeen"));
 
         } catch (JSONException e) {
             e.printStackTrace();

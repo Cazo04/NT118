@@ -30,7 +30,7 @@ public class EmployeeViewPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new Messages();
             case 2:
-                return new Notification();
+                return Notification.newInstance(manv,pass);
             default:
                 return Profile.newInstance(manv,pass);
         }
