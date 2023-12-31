@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
     <TextView
         android:id="@+id/textview18"
         android:layout_width="wrap_content"
@@ -13,7 +14,8 @@
         android:paddingLeft="14dp"
         android:paddingBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
     <TextView
         android:id="@+id/textview19"
         android:layout_width="wrap_content"
@@ -22,6 +24,7 @@
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textview18"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
         android:paddingLeft="14dp"/>
     <TextView
         android:id="@+id/textview_ky_thanh_toan"
@@ -31,11 +34,13 @@
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textview18"
         app:layout_constraintStart_toEndOf="@+id/textview19"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"/>
     <TextView
         android:id="@+id/textview20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:text="Lương cơ bản:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textview19"
@@ -51,7 +56,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_ky_thanh_toan"
         app:layout_constraintStart_toEndOf="@+id/textview20"
         android:paddingTop="15dp"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"/>
     <TextView
         android:id="@+id/textview21"
         android:layout_width="wrap_content"
@@ -60,9 +66,12 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview20"
+        android:textColor="@color/white"
         android:paddingLeft="14dp"
         android:paddingTop="15dp"/>
     <EditText
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:id="@+id/edittext_so_gio_lam_viec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,6 +88,7 @@
         android:layout_height="wrap_content"
         android:text="Số giờ làm ngoài giờ:"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textview21"
         app:layout_constraintStart_toStartOf="parent"
         android:paddingTop="15dp"
@@ -87,16 +97,19 @@
         android:id="@+id/edittext_so_gio_lam_ngoai_gio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
         android:hint="Số giờ làm ngoài giờ"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/edittext_so_gio_lam_viec"
         app:layout_constraintStart_toEndOf="@id/textview22"
         android:layout_marginLeft="10dp"
         android:paddingTop="10dp"
+        android:textColor="@color/white"
         android:inputType="number"/>
     <TextView
         android:id="@+id/textview23"
         android:layout_width="wrap_content"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:text="Tiền thưởng:"
         android:textSize="20sp"
@@ -106,7 +119,9 @@
         android:paddingTop="15dp"/>
     <EditText
         android:id="@+id/edittext_tien_thuong"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
+        android:textColorHint="@color/white"
         android:layout_height="wrap_content"
         android:hint="Tiền thường"
         android:textSize="20sp"
@@ -121,12 +136,14 @@
         android:layout_height="wrap_content"
         android:text="Tổng trước khấu trừ:"
         android:textSize="25sp"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textview23"
         app:layout_constraintStart_toStartOf="parent"
         android:paddingLeft="14dp"
         android:paddingTop="28dp"/>
     <TextView
         android:id="@+id/textview25"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thuế thu nhập:"
@@ -137,8 +154,10 @@
         android:paddingTop="16dp"/>
     <EditText
         android:id="@+id/edittext_thue_thu_nhap"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
         android:hint="Thuế thu nhập"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textview25"
@@ -147,6 +166,7 @@
         android:inputType="number"/>
     <TextView
         android:id="@+id/textview26"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bảo hiểm:"
@@ -157,6 +177,8 @@
         android:paddingTop="16dp"/>
     <EditText
         android:id="@+id/edittext_bao_hiem"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Bảo hiểm"
@@ -167,6 +189,7 @@
         android:inputType="number"/>
     <TextView
         android:id="@+id/textview27"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tiền phạt:"
@@ -177,6 +200,8 @@
         android:paddingTop="16dp"/>
     <EditText
         android:id="@+id/edittext_tien_phat"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Tiền phạt"
@@ -187,6 +212,7 @@
         android:inputType="number"/>
     <TextView
         android:id="@+id/textview28"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tổng thu nhập:"
