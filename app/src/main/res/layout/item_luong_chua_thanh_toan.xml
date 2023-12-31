@@ -37,6 +37,6 @@
             android:textSize="20sp"
             android:textColor="@color/red"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
