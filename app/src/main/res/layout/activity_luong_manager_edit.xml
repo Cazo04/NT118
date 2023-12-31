@@ -115,6 +115,103 @@
         android:layout_marginLeft="10dp"
         android:paddingTop="10dp"
         android:inputType="number"/>
-
-
+    <TextView
+        android:id="@+id/textview24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng trước khấu trừ:"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview23"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="28dp"/>
+    <TextView
+        android:id="@+id/textview25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thuế thu nhập:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview24"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="16dp"/>
+    <EditText
+        android:id="@+id/edittext_thue_thu_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Thuế thu nhập"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textview25"
+        app:layout_constraintTop_toBottomOf="@+id/textview24"
+        android:layout_marginLeft="10dp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/textview26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bảo hiểm:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview25"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="16dp"/>
+    <EditText
+        android:id="@+id/edittext_bao_hiem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Bảo hiểm"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_thue_thu_nhap"
+        app:layout_constraintStart_toEndOf="@+id/textview26"
+        android:layout_marginLeft="10dp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/textview27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiền phạt:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview26"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="16dp"/>
+    <EditText
+        android:id="@+id/edittext_tien_phat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Tiền phạt"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_bao_hiem"
+        app:layout_constraintStart_toEndOf="@+id/textview27"
+        android:layout_marginLeft="10dp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/textview28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng thu nhập:"
+        android:textSize="26sp"
+        app:layout_constraintTop_toBottomOf="@+id/textview27"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="20dp"/>
+    <TextView
+        android:id="@+id/tong_thu_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_tien_phat"
+        app:layout_constraintStart_toEndOf="@+id/textview28"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"/>
+    <Button
+        android:id="@+id/button_luu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tong_thu_nhap"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
