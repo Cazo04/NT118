@@ -62,4 +62,16 @@
         app:layout_constraintTop_toBottomOf="@id/btn_duyet_don"
         android:layout_marginTop="20dp">
     </Button>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_luong_nhanvien"
+        android:text="Quản lý lương nhân viên"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_duyet_don"
+        android:layout_marginTop="20dp">
+    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

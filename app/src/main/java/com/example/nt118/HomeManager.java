@@ -85,11 +85,11 @@ public class HomeManager extends Fragment {
         Button btnDuyetDon = view.findViewById(R.id.btn_duyet_don);
         Button btnXuLyViPham = view.findViewById(R.id.btn_xu_ly_vi_pham);
         Button btnPhanHoiYKien = view.findViewById(R.id.btn_phan_hoi_y_kien);
+        Button btnLuongNhanvien = view.findViewById(R.id.btn_luong_nhanvien);
 
         btnLichNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Xử lý khi btnLichNhanVien được nhấn
                 Intent intent = new Intent(getContext(), LichLamViec.class);
                 intent.putExtra("nhanVien", nhanVien);
                 startActivity(intent);
@@ -99,7 +99,9 @@ public class HomeManager extends Fragment {
         btnQuanLyNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Xử lý khi btnQuanLyNhanVien được nhấn
+                Intent intent = new Intent(getContext(), EmployeeManager.class);
+                intent.putExtra("nhanVien", nhanVien);
+                startActivity(intent);
             }
         });
 
@@ -121,6 +123,12 @@ public class HomeManager extends Fragment {
             @Override
             public void onClick(View v) {
                 // Xử lý khi btnPhanHoiYKien được nhấn
+            }
+        });
+        btnLuongNhanvien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
