@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:paddingLeft="14dp"/>
     <TextView
-        android:id="@+id/textview_ky_thanh_toan"
+        android:id="@+id/tv_ky_thanh_toan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -49,13 +49,13 @@
         android:paddingLeft="14dp"
         android:paddingTop="15dp"/>
     <TextView
-        android:id="@+id/textview_luong_co_ban"
+        android:id="@+id/tv_luong_co_ban"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="2000000"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textview_ky_thanh_toan"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ky_thanh_toan"
         app:layout_constraintStart_toEndOf="@+id/textview20"
         android:paddingTop="15dp"
         android:paddingLeft="10dp"/>
@@ -71,14 +71,14 @@
         android:paddingLeft="14dp"
         android:paddingTop="15dp"/>
     <TextView
-        android:id="@+id/textview_so_gio_lam_viec"
+        android:id="@+id/tv_so_gio_lam_viec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:text="200 giờ"
         app:layout_constraintStart_toEndOf="@id/textview21"
-        app:layout_constraintTop_toBottomOf="@+id/textview_luong_co_ban"
+        app:layout_constraintTop_toBottomOf="@+id/tv_luong_co_ban"
         android:paddingTop="15dp"
         android:paddingLeft="10dp"/>
 
@@ -94,13 +94,13 @@
         android:paddingTop="15dp"
         android:paddingLeft="14dp"/>
     <TextView
-        android:id="@+id/textview_so_gio_lam_viec_ngoai_gio"
+        android:id="@+id/tv_so_gio_lam_viec_ngoai_gio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="20 giờ"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textview_so_gio_lam_viec"
+        app:layout_constraintTop_toBottomOf="@+id/tv_so_gio_lam_viec"
         app:layout_constraintStart_toEndOf="@+id/textview22"
         android:paddingTop="15dp"
         android:paddingLeft="10dp"/>
@@ -117,13 +117,13 @@
         android:paddingLeft="14dp"
         android:paddingTop="15dp"/>
     <TextView
-        android:id="@+id/textview_tien_thuong"
+        android:id="@+id/tv_tien_thuong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="500000đ"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textview_so_gio_lam_viec_ngoai_gio"
+        app:layout_constraintTop_toBottomOf="@+id/tv_so_gio_lam_viec_ngoai_gio"
         app:layout_constraintStart_toEndOf="@+id/textview23"
         android:paddingTop="15dp"
         android:paddingLeft="10dp"/>
@@ -151,7 +151,7 @@
         android:paddingLeft="14dp"
         android:paddingTop="16dp"/>
     <TextView
-        android:id="@+id/textview_thue_thu_nhap"
+        android:id="@+id/tv_thue_thu_nhap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -174,13 +174,13 @@
         android:paddingLeft="14dp"
         android:paddingTop="16dp"/>
     <TextView
-        android:id="@+id/textview_bao_hiem"
+        android:id="@+id/tv_bao_hiem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="5%"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textview_thue_thu_nhap"
+        app:layout_constraintTop_toBottomOf="@+id/tv_thue_thu_nhap"
         app:layout_constraintStart_toEndOf="@+id/textview26"
         android:paddingTop="16dp"
         android:paddingLeft="10dp"/>
@@ -197,13 +197,13 @@
         android:paddingLeft="14dp"
         android:paddingTop="16dp"/>
     <TextView
-        android:id="@+id/textview_tien_phat"
+        android:id="@+id/tv_tien_phat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="0đ"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textview_bao_hiem"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bao_hiem"
         app:layout_constraintStart_toEndOf="@+id/textview27"
         android:paddingTop="16dp"
         android:paddingLeft="10dp"/>
@@ -219,12 +219,12 @@
         android:paddingLeft="14dp"
         android:paddingTop="20dp"/>
     <TextView
-        android:id="@+id/textview_tong_thu_nhap"
+        android:id="@+id/tv_tong_thu_nhap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="26sp"
-        app:layout_constraintTop_toBottomOf="@+id/textview_tien_phat"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tien_phat"
         app:layout_constraintStart_toEndOf="@+id/textview28"
         android:paddingLeft="5dp"
         android:paddingTop="20dp"/>
