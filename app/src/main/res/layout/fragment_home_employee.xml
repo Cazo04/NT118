@@ -9,137 +9,63 @@
     android:background="#000000"
     tools:context=".HomeEmployee">
 
+
+
     <Button
-        android:id="@+id/lich_lam_viec_ke_tiep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="@string/lich_lam_viec_ke_tiep"
-        android:textColor="#000000"
-        android:backgroundTint="#FFFFFF"
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_lich_nhan_vien"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Lịch làm việc"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="150dp"/>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:id="@+id/btn_luong_nhanvien"
+        android:text="Bảng lương"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="VisualLintButtonSize"></Button>
+        android:layout_marginTop="150dp"
+        />
 
-    <androidx.cardview.widget.CardView
+    <Button
         android:layout_width="160dp"
         android:layout_height="120dp"
-        android:id="@+id/lich_lam_viec"
-        app:cardCornerRadius="20dp"
+        android:id="@+id/btn_vietdon"
+        android:text="Viết đơn"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/lich_lam_viec_ke_tiep">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="@string/lich_lam_viec"
-                android:textColor="#000000"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"></Button>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/btn_lich_nhan_vien"
+        android:layout_marginTop="20dp"/>
 
-    <androidx.cardview.widget.CardView
+    <Button
         android:layout_width="160dp"
         android:layout_height="120dp"
-        android:id="@+id/bang_luong"
-        app:cardCornerRadius="20dp"
+        android:id="@+id/btn_xu_ly_vi_pham"
+        android:text="Vi phạm"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/lich_lam_viec_ke_tiep">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="@string/bang_luong"
-                android:textColor="#000000"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"></Button>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/btn_luong_nhanvien"
+        android:layout_marginTop="20dp"/>
 
-    <androidx.cardview.widget.CardView
+    <Button
         android:layout_width="160dp"
         android:layout_height="120dp"
-        android:id="@+id/vi_pham"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/bang_luong">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="@string/vi_pham"
-                android:textColor="#000000"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"></Button>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="160dp"
-        android:layout_height="120dp"
-        android:id="@+id/viet_don"
-        app:cardCornerRadius="20dp"
+        android:id="@+id/btn_y_kien"
+        android:text="Ý kiến"
+        android:textColor="@color/black1"
+        android:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/lich_lam_viec">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="@string/viet_don"
-                android:textColor="#000000"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"></Button>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="160dp"
-        android:layout_height="120dp"
-        android:id="@+id/y_kien"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/viet_don">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="@string/y_kien"
-                android:textColor="#000000"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"></Button>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/btn_vietdon"
+        android:layout_marginTop="20dp">
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

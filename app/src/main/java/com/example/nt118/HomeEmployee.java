@@ -1,12 +1,18 @@
 package com.example.nt118;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.nt118.Class.NhanVien;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,8 +27,8 @@ public class HomeEmployee extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String manv;
+    private String mk;
 
     public HomeEmployee() {
         // Required empty public constructor
@@ -50,16 +56,37 @@ public class HomeEmployee extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            manv     = getArguments().getString(ARG_PARAM1);
+            mk      = getArguments().getString(ARG_PARAM2);
+            nhanvien = new NhanVien();
+            nhanvien.setMANV(manv);
+            nhanvien.setMK(mk);
         }
         Server server = new Server();
     }
-
+private NhanVien nhanvien;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_employee, container, false);
+    }
+    private Button btn_lich_nhan_vien, btn_luong_nhanvien, btn_vietdon, btn_xu_ly_vi_pham,btn_y_kien;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        btn_lich_nhan_vien = view.findViewById(R.id.btn_lich_nhan_vien);
+        btn_luong_nhanvien = view.findViewById(R.id.btn_luong_nhanvien);
+        btn_vietdon = view.findViewById(R.id.btn_vietdon);
+        btn_xu_ly_vi_pham = view.findViewById(R.id.btn_xu_ly_vi_pham);
+        btn_y_kien = view.findViewById(R.id.btn_y_kien);
+        btn_lich_nhan_vien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),LichlamViecView.class);
+                intent.putExtra("nhanVien", nhanvien);
+                startActivity(intent);
+            }
+        });
     }
 }
