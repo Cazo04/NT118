@@ -140,4 +140,24 @@ public class LichLamViecData {
         }
         return res;
     }
+    public Date convertNgayBatDauToDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        try {
+            Date date = dateFormat.parse(NgayBatDau);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public Date convertNgayKetThucToDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        try {
+            Date date = dateFormat.parse(NgayKetThuc);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

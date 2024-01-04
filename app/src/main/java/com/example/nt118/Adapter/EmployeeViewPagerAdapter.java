@@ -26,7 +26,7 @@ public class EmployeeViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return  HomeEmployee.newInstance(manv,pass);
+                return HomeEmployee.newInstance(manv,pass);
             case 1:
                 return new Messages();
             case 2:
